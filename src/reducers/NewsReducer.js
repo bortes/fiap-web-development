@@ -1,31 +1,26 @@
 import * as NewsActions from '../actions/NewsActions';
 
+/**
+ * Atualiza o estado da aplicacao em funcao das acoes solicitadas.
+ *
+ * @author bortes
+ */
 const NewsReducer = (state = [], action) => {
-    switch(action.type) {
+    switch (action.type) {
         case NewsActions.CREATE_NEWS:
-            return state.concat([action.data]);
+            return [action.payload].concat(state);
 
         case NewsActions.READ_NEWS:
-            return state;
+            return state.map(o => o.when === action.payload.when ? { ...o, editing: false } : o);
 
         case NewsActions.UPDATE_NEWS:
-            return state.map((post)=>{
-                if(post.id === action.id) {
-                    return {
-                        ...post,
-                        title: action.data.newTitle,
-                        message: action.data.newMessage,
-                        editing: !post.editing
-                    }
-                } else
-                    return post;
-            })
+            return state.map(o =>  o.when === action.payload.when ? action.payload : o )
 
         case NewsActions.DELETE_NEWS:
-            return state.filter((post)=>post.id !== action.id);
+            return state.filter(o => o.when !== action.payload.when);
 
         case NewsActions.EDIT_NEWS:
-            return state.map((post)=>post.id === action.id ? {...post,editing:!post.editing}:post)
+            return state.map(o => o.when === action.payload.when ? { ...o, editing: true } : o);
 
         default:
             return state;

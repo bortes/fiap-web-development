@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
 
-import PostForm from '../components/PostForm';
-import AllPost from '../components/AllPost';
+import ListNews from '../components/ListNews';
 
+/**
+ * Componente responsavel por exibir a pagina principal.
+ *
+ * @author bortes
+ */
 class Home extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="navbar">
-          <h2 className="center">Post It</h2>
-        </div>
-        <PostForm />
-        <AllPost />
-      </div>
-    );
-  }
+    /**
+     * Renderiza o componente.
+     *
+     * @author bortes
+     */
+    render() {
+        return (
+            <main role="main">
+                <div className="jumbotron">
+                    <div className="container">
+                        <h1 className="display-3"><span className="text-danger">Olá</span>, seja bem vindo!!</h1>
+                        <p>Esta é uma página exemplo construída em <a className="text-danger" href="https://reactjs.org/">React</a> e <a className="text-danger" href="https://getbootstrap.com/">Bootstrap</a>.</p>
+                    </div>
+                </div>
+                <ListNews />
+            </main>
+        );
+    }
 }
 
 export default Home;
