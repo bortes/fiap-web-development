@@ -25,6 +25,12 @@ Tanto para codificação quanto execução precisamos apenas do:
 
 ### 1.1. execução
 
+Antes de executar a aplicação é necessários instalar as dependências da mesma. Para tanto execute:
+
+```bash
+npm install
+```
+
 Para executar a aplicação, execute:
 
 ```bash
