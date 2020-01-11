@@ -1,17 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
-import NewsReducer from './reducers/NewsReducer';
+import './themes/bootswatch/slate/bootstrap.css';
 import Home from './scenes/Home';
 import * as ServiceWorker from './services/ServiceWorker';
-import './index.css';
-
-const store = createStore(NewsReducer);
+import MainStore from './stores/MainStore';
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={MainStore}>
         <Home />
     </Provider>,
     document.getElementById('root')
